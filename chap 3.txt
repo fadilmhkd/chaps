@@ -1,0 +1,61 @@
+1
+return character in '!?.'
+
+2.
+sentences = []
+for sentence in split_sentences(text):
+   sentences.append(clean_text(sentence).split())
+return sentences
+
+3.
+corpus = []
+for filename in list_textfiles('data/arabian_nights'):
+    corpus.append(tokenize(read_file(filename)))
+
+4. 
+    base, _ = splitext(filename)
+    return base
+
+4;2
+    return basename(filepath)
+
+4;3
+    return remove_dir(remove_ext(filepath))
+
+5
+    return int(get_filename(filepath))
+
+6
+sum(sentences_per_night) / len(sentences_per_night)
+
+7
+    n_words = 0
+    for sentence in text:
+        n_words += len(sentence)
+    return n_words / 130
+
+7;2
+story_time_per_night = []
+for night in corpus:
+    story_time_per_night.append(story_time(night))
+
+7;3
+print(sum(story_time_per_night) / len(story_time_per_night))
+print(max(story_time_per_night))
+print(min(story_time_per_night))
+
+8
+plt.plot(words_per_night)
+
+8;1
+plt.plot(story_time_per_night)
+
+8;2
+    positions = []
+    sentences = 0
+    for night in corpus:
+        for i, sentence in enumerate(night):
+            if word in sentence:
+                positions.append(i + sentences)
+            sentences += i
+    return positions
