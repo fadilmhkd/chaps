@@ -1,0 +1,100 @@
+def AND(vector_a, vector_b):
+    # insert your code here
+    return [1 if a and b else 0 for a, b in zip(vector_a, vector_b)]
+    
+# these tests should return True if your code is correct
+print(AND([1, 1, 0, 0], [1, 1, 1, 0]) == [1, 1, 0, 0])
+print(AND([1, 0, 0, 1, 0, 0, 1], [1, 1, 1, 0, 1, 0, 1]) == [1, 0, 0, 0, 0, 0, 1])
+
+2. def AND(*vectors):
+    # insert your code here
+    return [1 if all(row) else 0 for row in zip(*vectors)]    
+
+# these tests should return True if your code is correct
+print(AND([1, 1, 0, 0], [1, 1, 1, 0], [1, 0, 0, 0]) == [1, 0, 0, 0])
+print(AND([1, 1, 1, 0, 1], [1, 0, 0, 1, 0], [0, 1, 1, 0, 1]) == [0, 0, 0, 0, 0])
+
+3. def NOT(vector):
+    # insert your code here
+    return [1 if not elt else 0 for elt in vector]
+
+# these tests should return True if your code is correct
+print(AND([1, 1, 0, 0], [1, 1, 1, 0], NOT([1, 0, 0, 0])) == [0, 1, 0, 0])
+
+4. 
+class IRSystem:
+    """A very simple Information Retrieval System. The constructor 
+    s = IRSystem() builds an empty system. Next, index several documents 
+    with s.index_document(ID, text). Then ask queries with 
+    s.query('term1', 'term2') to retrieve the matching documents."""
+    
+    def __init__(self):
+        "Initialize an IR Sytem."
+        self.tdf = defaultdict(set)
+        self.doc_ids = []
+                
+    def index_document(self, doc_id, words):
+        "Add a new unindexed document to the system."
+        self.doc_ids.append(doc_id)
+        for word in words:
+            self.tdf[word].add(doc_id)
+
+    def index_collection(self, filenames):
+        "Index a collection of documents."
+        for filename in filenames:
+            self.index_document(os.path.basename(filename), 
+                                tokenize(open(filename).read()))
+            
+    def query(self, *terms):
+        "Query the system for documents in which all terms occur."
+        # insert your code here
+        return set.intersection(*map(self.tdf.get, terms))
+    
+# these tests should return True if your code is correct
+s = IRSystem()
+s.index_collection(glob.glob('data/haggard/*.txt'))
+
+print('Beatrice 3096.txt' in s.query("master", "children"))
+print('Fair Margaret 9780.txt' in s.query("eye", "father", "work"))
+
+5.class IRSystem:
+    """A very simple Information Retrieval System. The constructors = IRSystem() builds an empty system. Next, index several 
+    documents with s.index_document(ID, text). Then ask queries 
+    with s.query('term1', 'term2') to retrieve the top n matching 
+    documents."""
+    
+    def __init__(self):
+        "Initialize an IR Sytem."
+        self.tdf = defaultdict(Counter)
+        self.doc_ids = []
+                
+    def index_document(self, doc_id, words):
+        "Add a new unindexed document to the system."
+        self.doc_ids.append(doc_id)
+        for word in words:
+            self.tdf[word][doc_id] += 1
+
+    def index_collection(self, filenames):
+        "Index a collection of documents."
+        for filename in filenames:
+            self.index_document(os.path.basename(filename), 
+                                tokenize(open(filename).read()))
+                
+    def score(self, doc_id, *terms):
+        "Score a document for a particular query using the sum of the term frequencies."
+        # insert your code here
+        return sum(self.tdf[term][doc_id] for term in terms)
+            
+    def query(self, *terms, n=10):
+        """Query the system for documents in which all terms occur. Returns
+        the top n matching documents."""
+        scores = {doc_id: self.score(doc_id, *terms) for doc_id in self.doc_ids}
+        return sorted(scores, key=scores.get, reverse=True)[:n]
+
+
+# these tests should return True if your code is correct
+s = IRSystem()
+s.index_collection(glob.glob('data/haggard/*.txt'))
+
+print(s.query("master")[0] == 'The Ancient Allan 5746.txt')
+print(s.query("egg", "shell")[0] == 'Dawn 10892.txt')

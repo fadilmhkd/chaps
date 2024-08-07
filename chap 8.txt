@@ -1,0 +1,40 @@
+1. import os
+
+def pdftotext(pdf):
+    # insert your code here
+    basename, _ = os.path.splitext(os.path.basename(pdf))
+    subprocess.call(['pdftotext', '-enc', 'UTF-8',
+                     pdf, os.path.join('data', basename + '.txt')])
+
+# if your answer is correct this should print the first 1000 bytes of the text file
+pdftotext("pdfs/blei2003.pdf")
+with open(os.path.join('data', 'blei2003.txt')) as infile:
+    print(infile.read(1000))
+
+2.def pdftotext(pdf):
+    """Convert a pdf to a text file. Extract the Author and Title 
+    and return a dictionary consisting of the author, title and 
+    text."""
+    basename, _ = os.path.splitext(os.path.basename(pdf))
+    # insert your code here
+    subprocess.call(['pdftotext', '-enc', 'UTF-8', '-htmlmeta',
+                     pdf, os.path.join('data', basename + '.html')])
+    data = parse_html(os.path.join('data', basename + '.html'))
+    with open(os.path.join('data', basename + '.txt'), 'w') as outfile:
+        outfile.write(data['text'])
+    return data
+
+3. 
+from whoosh.index import open_dir
+from whoosh.qparser import QueryParser
+
+def search(query):
+    # insert your code here
+    index = open_dir("pdf-index")
+    query = QueryParser("text", index.schema).parse(query)
+    with index.searcher() as searcher:
+        results = searcher.search(query)
+        for hit in results:
+            yield dict(hit)
+    
+print(list(search("(topic model) OR (index probability")))

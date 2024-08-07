@@ -1,0 +1,107 @@
+1. def AutomaticReadabilityIndex(n_chars, n_words, n_sents):
+    return 4.71 * (n_chars / n_words) + 0.5 * (n_words / n_sents) - 21.43
+    
+
+# do not modify the code below, it is for testing your answer only!
+# it should output True if you did well
+print(abs(AutomaticReadabilityIndex(300, 40, 10) - 15.895) < 0.001)
+
+2. def extract_counts(sentences):
+    n_sents = len(sentences)
+    n_words = 0
+    n_chars = 0
+    for sentence in sentences:
+        n_words +=  len(sentence)
+        for word in sentence:
+            n_chars += len(word)
+            
+    return n_chars, n_words,n_sents
+
+# do not modify the code below, for testing only!
+print(extract_counts(
+    [["This", "was", "rather", "easy", "."], 
+     ["Please", "give", "me", "something", "more", "challenging"]]) == (54, 11, 2))
+
+3. def compute_ARI(sentences):
+    n_chars, n_words, n_sents = extract_counts(sentences)
+    return AutomaticReadabilityIndex(n_chars, n_words, n_sents)
+    
+# do not modify the code below, it is for testing your answer only!
+# it should output True if you did well
+print(abs(compute_ARI(sentences) - 4.442) < 0.001)
+
+4. def compute_ARIs(directory):
+    for filename, text in readcorpus(directory):
+        tokens = tokenise(text)
+        sentences = split_sentences(tokens)
+        print(filename + " - " + str(compute_ARI(sentences)))
+
+compute_ARIs("data/")
+
+
+5. scores = {"Hermans": 0.15, "Voskuil": 0.55, "Reve": 0.2, "Mulisch": 0.18, "Claus": 0.02}
+
+def classify(scores):
+    # insert your code here
+    return max(scores, key=scores.__getitem__)
+    
+print(classify(scores) == "Voskuil")
+
+6. def extract_author(filename):
+    # insert your code here
+    return filename.split('/')[-1].split('-')[0]
+
+# do not modify the code below, it is for testing your answer only!
+# it should output True if you did well
+print(extract_author("Austen-emma.txt") == "Austen")
+print(extract_author("/path/to/Austen-emma.txt") == "Austen")
+
+7.def score(features, feature_database):
+    "Predict who wrote the document on the basis of the corpus."
+    scores = defaultdict(float)
+    # compute the number of features in the feature database here
+    n_features = len(set(feature for author, features in feature_database.items() 
+                                 for feature in features))
+    for author in feature_database:
+        # compute the probability of features given that author here
+        features_sum = sum(feature_database[author].values())
+        for feature in features:
+            scores[author] += log_probability(
+                feature_database[author][feature], features_sum, n_features)
+    return scores
+
+# do not modify the code below, for testing your answer only! 
+# It should return True if you did well!
+features = ["the", "a", "the", "be", "book"]
+feature_database = defaultdict(lambda: defaultdict(int))
+feature_database["A"]["the"] = 2
+feature_database["A"]["a"] = 5
+feature_database["A"]["book"]= 1
+feature_database["B"]["the"] = 5
+feature_database["B"]["a"] = 1
+feature_database["B"]["book"] = 6
+print(abs(dict(score(features, feature_database))["A"] - -7.30734) < 0.001)
+
+8. def test_from_corpus(directory, feature_database):
+    results = []
+    # insert your code here
+    results = []
+    for filename in os.listdir(directory):
+        features = extract_features(os.path.join(directory, filename))
+        author = extract_author(filename)
+        prediction = predict_author(features, feature_database)
+        results.append((author, prediction))
+    return results
+
+9. def analyze_results(results):
+    # insert your code here
+    correct = 0.0
+    for author, prediction in results:
+        if author == prediction:
+            correct += 1
+    return correct / len(results)
+
+# do not modify the code below, for testing only!
+print(analyze_results([("A", "A"), ("A", "B"), ("C", "C"), ("D", "C"), ("E", "E")]) == 0.6)
+
+10.

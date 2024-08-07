@@ -1,0 +1,11 @@
+1. # write your code here
+
+def starts_with_vowel(word):
+    "Return True if WORD starts with a vowel, False otherwise."
+    vowels = ('a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U')
+    return word.startswith(vowels)
+
+# do not modify the code below, it is for testing your answer only!
+# it should output True if you did well
+print(starts_with_vowel("egg") == True)
+print(starts_with_vowel("bacon") == False)
