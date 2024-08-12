@@ -1,0 +1,66 @@
+Less 1
+
+cout << "Hello world!";
+
+cout << "My name is Codio.";
+
+The line needs quotations
+
+cout << "Hello" << endl;
+cout << "Hello";
+cout << endl;
+
+week 2
+
+int number = 1000000;
+
+Doubles contain decimals while int is a basic variable for numbers(will be rounded).
+
+string var = "this is a string";
+
+string var;
+int Var;
+
+int my_var = 5;
+cout << my_var << endl>;
+my_var = 10;
+cout << my_var << endl>;
+
+variable_1
+
+int, double, string, bool
+
+week 3 
+
+cout << greeting << " Today is " << dayOfWeek << ", " << month << " " << day << "." << endl;
+    cout << "The current wait time is " << currentWaitMinutes << " minutes." << endl;
+
+week 4
+
+bool my_bool = true;
+cout << my_bool;
+my_bool = test;
+cout << my_bool;
+
+
+
+int my_int = first_num;
+cout << my_int << endl;
+my_int = second_num;
+cout << my_int << endl;
+my_int = third_num;
+cout << my_int << endl;
+
+
+cout << line1;
+cout << endl;
+cout << line2;
+cout << endl;
+
+double my_double = 3.14;
+cout << my_double << endl;
+my_double = number; 
+cout << my_double << endl;
+
+cout << "Okay, it is time to ";
+cout << "learn about operators." << endl;
