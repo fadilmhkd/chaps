@@ -1,0 +1,238 @@
+Les 1
+
+for (int i = 0; i <= 9; i++) {
+    cout << "Loops are awesome!" << endl;
+}
+
+for (int i = 0; i < 10; i++) {
+    cout << "Loops are awesome!" << endl;
+}
+
+
+for (int i = 0; i < 4; i++) {
+    tina.forward(100);
+    tina.right(90);
+}
+
+for (int i = 1; i < 5; i++) {
+    tina.forward(100);
+    tina.right(90);
+}
+
+for (int i = 20; i < 24; i++) {
+    tina.forward(100);
+    tina.right(90);
+}
+
+
+tina.pencolor({"blue"});
+tina.width(2);
+tina.shape("arrow");
+tina.speed(TS_SLOWEST);
+
+for (int i = 0; i < 4; i++) {
+    tina.forward(75);
+    tina.right(90);
+    tina.forward(25);
+    tina.right(90);
+    tina.forward(25);
+    tina.right(90);
+    tina.forward(25);
+}
+
+tina.pencolor({"red"});
+tina.width(2);
+tina.shape("square");
+tina.speed(TS_FASTEST);
+
+for (int i = 0; i < 360; i++) {
+    tina.forward(1);
+    tina.right(1);
+}
+
+tina.pencolor({"green"});
+tina.width(2);
+tina.shape("triangle");
+tina.speed(TS_NORMAL);
+
+for (int i = 10; i <= 200; i+=10) {
+    tina.forward(i);
+    tina.right(90);
+}
+
+
+for (int n=2; n<=10; n+=2) {
+    cout << n << endl;
+}
+
+
+int sum = 0;
+for (int i = 1; i <= 100; i++) {
+    sum += i;
+}
+cout << sum << endl;
+
+les 2
+
+A while loop is normally infitinite while a for loop has a number of uses.
+
+
+tina.pencolor({"blue"});
+tina.width(2);
+tina.shape("arrow");
+tina.speed(TS_SLOWEST);
+
+int i = 0;
+while (i < 4) {
+    tina.forward(75);
+    tina.right(90);
+    tina.forward(25);
+    tina.right(90);
+    tina.forward(25);
+    tina.right(90);
+    tina.forward(25);
+    i++;
+}
+
+tina.pencolor({"red"});
+tina.width(2);
+tina.shape("square");
+tina.speed(TS_FASTEST);
+
+int i = 0;
+while (i < 360) {
+    tina.forward(1);
+    tina.right(1);
+    i++;
+}
+
+tina.pencolor({"green"});
+tina.width(2);
+tina.shape("triangle");
+tina.speed(TS_NORMAL);
+
+int i = 10;
+while (i <= 200) {
+    tina.forward(i);
+    tina.right(90);
+    i+=10;
+}
+
+
+int i = 10;
+while (i < = 100) {
+    cout << i << endl;
+    i += 10;
+}
+
+
+int count = 0;
+while (count < 10) {
+    cout << "C++" << endl;
+    count = count + 1;
+}
+
+
+int total = 0;
+while (true) {
+    total = total + 1;
+    if (total > 99) {
+        break;
+    }
+}
+
+
+Les 3
+
+
+for (int line = 1; line <= 12; line++) {
+    for (int num = 1; num <= line; num++) {
+        cout << num << " ";
+    }
+    cout << "" << endl;
+}
+
+
+for (int i = 0; i < 4; i++) {
+    cout << "&&" << endl;
+    for (int j = 0; j < 3; j++) {
+        cout << "*" << endl;
+    }
+}
+
+
+Les 4
+
+
+for (int x = 0; x < 5; x++) {
+    if (x % 2 == 0) {
+        cout << "Even Odd Even" << endl;
+    }
+    else {
+        cout << "Odd Even Odd" << endl;
+    }
+}
+
+
+int lives = 10;
+while (lives > 0) {
+    cout << "You are still in the game." << endl;
+    lives = lives + 1;
+}
+cout << "Game over." << endl;
+
+
+for (int i = 0; i < 3; i++) {
+    cout << "XOXOXOXOX" << endl;
+for (int j = 0; j < 2; j++) {
+    cout << "OXO" << endl;
+    }
+}
+
+
+Les 5
+
+tina.shape("indented triangle");
+
+for (int i = 0; i < 3; i++) {
+    tina.left(120);
+    tina.forward(100);
+}
+
+
+for (int i = 0; i < 10; i++) {
+    cout << x << endl;
+}
+
+
+int sum = 0;
+while (a <= b) {
+    sum += a;
+    a++;
+}
+cout << sum << endl;
+
+
+for (int i = 100; i <= 100; i--) {
+    if (i == 0) {
+       cout << "Print me!" << endl;
+       break;
+    }
+    else {
+        while (true) {
+            break;
+            i++;
+            cout << "Don't print me!" << endl;
+         }
+     }
+}
+
+
+for (int i = 1; i <= 5; i++) {
+    int count = 5;
+    while (count > i) {
+        cout << '.';
+        count--;
+    }
+    cout << i << endl;
+}

@@ -1,0 +1,93 @@
+Week 2
+Les 1
+
+Double of 10.01
+
+int a = 10;
+double b = 5.0;
+printf("%f \n", a / b);
+
+a++;
+a+=1;
+a = a + 1;
+
+string a = "I understand";
+string b = a + " string concatenation!";
+cout << b << endl;
+
+int a = 42;
+int b = 2;
+//decrement a by 1
+a--;
+//decrement a by b
+a-=b;
+
+Using ints or doubles the answer should be the same either way.
+
+% - returns remainder.
+
+cout << (a * b) << endl;
+cout << (a*=b) << endl;
+
+Multiplication and division.
+
+double a = 0.01;
+cout << boolalpha << (bool) (int) a << endl;
+
+-9
+
+1
+
+
+Les 2
+
+== checks to see if values are equal. = assigns a value to a variable.
+
+If a is less than b
+If a is equal to b
+
+19 >= 19
+19 >= 9
+
+&&; if both expressions are true, than it will be true, if one or more expressions are false the result will be false.
+
+(5 != 4) 
+(! (5 == 4)) 
+both return true
+
+true
+
+
+Les 3
+
+* multiplication.
+% modulo.
+/ division.
+
++
+
+Parentheses
+Exponents
+Multiplication, Division, and Modulo
+Addition and Subtraction
+
+false
+
+
+Les 4
+
+int b = 6;
+
+cout << boolalpha << ( 0 && 1 );
+
+string a = "Hello ";
+string b = "world";
+cout << (a + b) << endl;
+
+double a = 7.0;
+int b = 2;
+
+cout << a / b << endl;
+
+int sum = stoi(num1) + stoi(num2);
+cout << ( num1 + " + " + num2 + " = " + to_string(sum) ) << endl;
